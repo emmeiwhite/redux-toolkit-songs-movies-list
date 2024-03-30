@@ -22,6 +22,15 @@ const store = configureStore({
   },
 });
 
+/** --- Dispatching an action in Redux with Slice ---
+ * Note: It is not react-redux. We'll ultimately connect react with redux
+ *  using react-redux library. This is just to debug and know the slices
+ */
+
+console.log(store.getState());
+store.dispatch(songsSlice.actions.addSong("Mai hun na!"));
+console.log(store.getState());
+
 // Just debugging
 // console.log(store.getState()); // songs:[]
 
@@ -41,8 +50,10 @@ store.dispatch({
 // 1. Creates initial small state for a piece of state
 // 2. Combines piece of reducer with the big reducer(app level)
 // 3. Creates action creator for us (let's see this coz this is fun)
-
+/*
 console.log(songsSlice.actions); // Returns an object which contains two action creators addSong() and removeSong(), which when called returns ACTION with type and payload
 
 console.log(songsSlice.actions.addSong("We are here!"));
 console.log(songsSlice.actions.removeSong());
+
+*/
