@@ -1,24 +1,24 @@
 import { createRandomSong } from "../data";
-import { addSong } from "../store"; // Action Creator
-import { useDispatch } from "react-redux";
+import { addSong, removeSong } from "../store"; // Action Creator
+import { useDispatch, useSelector } from "react-redux";
 
 function SongPlayList() {
   const dispatch = useDispatch();
   // To Do:
-  // Get list of songs
-  const songPlaylist = [];
+  // Get list of songs | Getting state from the store
+  const songPlaylist = useSelector((state) => state.songs);
 
   const handleSongAdd = (song) => {
-    const action = addSong(song);
-    console.log(action);
-    dispatch(action);
+    dispatch(addSong(song));
     // To Do:
     // Add song to list of songs
     console.log(song);
   };
+
   const handleSongRemove = (song) => {
     // To Do:
     // Remove song from list of songs
+    dispatch(removeSong(song));
   };
 
   const renderedSongs = songPlaylist.map((song) => {
@@ -48,6 +48,7 @@ function SongPlayList() {
           </button>
         </div>
       </div>
+
       <ul>{renderedSongs}</ul>
     </div>
   );

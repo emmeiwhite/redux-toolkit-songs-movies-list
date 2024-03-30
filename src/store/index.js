@@ -11,7 +11,26 @@ const songsSlice = createSlice({
 
     // 'song'+'/'+removeSong = 'song/removeSong' - Action
     removeSong(state, action) {
-      //
+      console.log("To remove the song");
+      //   state.filter((song) => song !== action.payload); Filter didn't work, we have to directly mutate the state in this case
+
+      const index = state.indexOf(action.payload);
+      state.splice(index, 1);
+    },
+  },
+});
+
+const moviesSlice = createSlice({
+  name: "movie",
+  initialState: [],
+  reducers: {
+    addMovie(state, action) {
+      console.log(action);
+      state.push(action.payload);
+    },
+    removeMovie(state, action) {
+      const index = state.indexOf(action.payload);
+      state.splice(index, 1);
     },
   },
 });
@@ -19,14 +38,16 @@ const songsSlice = createSlice({
 const store = configureStore({
   reducer: {
     songs: songsSlice.reducer,
+    movies: moviesSlice.reducer,
   },
 });
 
 // 1. We need to export the store
 export { store };
 
-// 2. After slice is created, we need to export action creator which is automatically created by redux-toolkit
-export const { addSong } = songsSlice.actions;
+// 2. After slice is created, we need to export action creators which is automatically created by redux-toolkit
+export const { addSong, removeSong } = songsSlice.actions;
+export const { addMovie, removeMovie } = moviesSlice.actions;
 
 /** --- Dispatching an action in Redux with Slice ---
  * Note: It is not react-redux. We'll ultimately connect react with redux
