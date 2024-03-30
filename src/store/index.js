@@ -22,7 +22,11 @@ const store = configureStore({
   },
 });
 
+// 1. We need to export the store
 export { store };
+
+// 2. After slice is created, we need to export action creator which is automatically created by redux-toolkit
+export const { addSong } = songsSlice.actions;
 
 /** --- Dispatching an action in Redux with Slice ---
  * Note: It is not react-redux. We'll ultimately connect react with redux
