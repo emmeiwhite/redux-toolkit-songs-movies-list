@@ -4,19 +4,14 @@ import { useDispatch, useSelector } from "react-redux";
 
 function MoviePlayList() {
   const dispatch = useDispatch();
-  // To Do:
-  // Get list of movies
+
   const moviePlaylist = useSelector((state) => state.movies);
 
   const handleMovieAdd = (movie) => {
-    // To Do:
-    // Add movie to list of movies
     dispatch(addMovie(movie));
   };
 
   const handleMovieRemove = (movie) => {
-    // To Do:
-    // Remove movie from list of movies
     dispatch(removeMovie(movie));
   };
 

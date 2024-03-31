@@ -17,6 +17,11 @@ const songsSlice = createSlice({
       const index = state.indexOf(action.payload);
       state.splice(index, 1);
     },
+
+    resetSongs(state, action) {
+      console.log("Reset Songs");
+      return [];
+    },
   },
 });
 
@@ -32,6 +37,10 @@ const moviesSlice = createSlice({
       const index = state.indexOf(action.payload);
       state.splice(index, 1);
     },
+    resetMovies(state, action) {
+      console.log("Reset Movies!");
+      return [];
+    },
   },
 });
 
@@ -46,8 +55,8 @@ const store = configureStore({
 export { store };
 
 // 2. After slice is created, we need to export action creators which is automatically created by redux-toolkit
-export const { addSong, removeSong } = songsSlice.actions;
-export const { addMovie, removeMovie } = moviesSlice.actions;
+export const { addSong, removeSong, resetSongs } = songsSlice.actions;
+export const { addMovie, removeMovie, resetMovies } = moviesSlice.actions;
 
 /** --- Dispatching an action in Redux with Slice ---
  * Note: It is not react-redux. We'll ultimately connect react with redux
