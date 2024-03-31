@@ -1,8 +1,8 @@
 import "./styles.css";
 import MoviePlayList from "./components/MoviePlayList";
 import SongPlayList from "./components/SongPlayList";
-import { resetMovies, resetSongs } from "./store";
-import { useDispatch, useSelector } from "react-redux";
+import { resetMovies } from "./store";
+import { useDispatch } from "react-redux";
 
 export default function App() {
   const dispatch = useDispatch();
@@ -10,7 +10,6 @@ export default function App() {
   const handleResetClick = () => {
     // We are dispatching two actions to handle both cases for now
     dispatch(resetMovies());
-    dispatch(resetSongs());
   };
 
   return (
